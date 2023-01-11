@@ -12,6 +12,9 @@ namespace BleachMod.Common.Players{
         public float PressureCostModifier = 1f;
         public int PressureRegenAmount = 1;
         public bool hasBadge = false;
+        public bool usedPills = false;
+        public bool usedStrongPills = false;
+        public bool usedPRegen = false;
         public override void Initialize() {
             MaxPressure = 0;
             C_Pressure = 0;
@@ -21,11 +24,17 @@ namespace BleachMod.Common.Players{
         {
             MaxPressure = tag.GetInt("MaxPressure");
             C_Pressure = MaxPressure;
-        }
+            usedPills = tag.GetBool("Pills");
+            usedStrongPills = tag.GetBool("SPills");
+            usedPRegen = tag.GetBool("PRegen");
+    }
         public override void SaveData(TagCompound tag)
         {
             tag.Add("MaxPressure", MaxPressure);
             tag.Add("Regen Rate", PressureRegenAmount);
+            tag.Add("Pills", usedPills);
+            tag.Add("SPills", usedStrongPills);
+            tag.Add("PRegen", usedPRegen);
         }
 
         public override void ResetEffects()
@@ -34,6 +43,18 @@ namespace BleachMod.Common.Players{
             PressureCostModifier = 1f;
             PressureRegenRate = 1f;
             PressureRegenAmount = 1;
+            if (usedPills)
+            {
+                MaxPressure += 50;
+            }
+            if (usedStrongPills)
+            {
+                MaxPressure += 50;
+            }
+            if (usedPRegen)
+            {
+                PressureRegenAmount += 1;
+            }
             hasBadge = false;
         }
 
