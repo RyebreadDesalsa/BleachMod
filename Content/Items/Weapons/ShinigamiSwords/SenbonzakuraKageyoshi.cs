@@ -44,10 +44,14 @@ namespace BleachMod.Content.Items.Weapons.ShinigamiSwords
 			int loc = -1;
 			for (int i = 0; i < 10; i++)
 			{
-				if (player.inventory.GetValue(i).ToString()[8..30].Equals("Senbonzakura Kageyoshi"))
-				{
-					loc = i;
+				if (player.inventory.GetValue(i).ToString().Length >= 30)
+                {
+					if (player.inventory.GetValue(i).ToString()[8..30].Equals("Senbonzakura Kageyoshi"))
+					{
+						loc = i;
+					}
 				}
+				
 			}
 			if (loc != -1)
 			{
