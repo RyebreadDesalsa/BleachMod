@@ -7,7 +7,7 @@ namespace BleachMod.Content.Items.Armor
 {
 
 	[AutoloadEquip(EquipType.Head)]
-	public class Squad_Member : ModItem
+	public class Third_Seat_Rank : ModItem
 	{
 		public override void Load()
 		{
@@ -20,9 +20,9 @@ namespace BleachMod.Content.Items.Armor
 		public override void SetStaticDefaults()
 		{
 			base.SetStaticDefaults();
-			DisplayName.SetDefault("Squad Member Rank");
-			Tooltip.SetDefault("The standard rank of a Shinigami.");
-            ArmorIDs.Head.Sets.DrawFullHair[Item.headSlot] = true;
+			DisplayName.SetDefault("Third Seat Rank");
+			Tooltip.SetDefault("The rank of a Shinigami with some skill.");
+			ArmorIDs.Head.Sets.DrawFullHair[Item.headSlot] = true;
 		}
 
 		public override void SetDefaults()
@@ -36,29 +36,24 @@ namespace BleachMod.Content.Items.Armor
 		// IsArmorSet determines what armor pieces are needed for the setbonus to take effect
 		public override bool IsArmorSet(Item head, Item body, Item legs)
 		{
-			return head.type == ModContent.ItemType<Squad_Member>() && body.type == ModContent.ItemType<Shihakusho>() && legs.type == ModContent.ItemType<Shinigami_Sandals>();
+			return head.type == ModContent.ItemType<Third_Seat_Rank>() && body.type == ModContent.ItemType<Shihakusho>() && legs.type == ModContent.ItemType<Shinigami_Sandals>();
 		}
 
 		// UpdateArmorSet allows you to give set bonuses to the armor.
 		public override void UpdateArmorSet(Player player)
 		{
-			player.setBonus = "Increases spiritual pressure by 100";
-			player.GetModPlayer<BleachPlayer>().MaxPressure += 100;
+			player.setBonus = "Increases spiritual pressure by 125 \nIncreases Defense by 4";
+			player.GetModPlayer<BleachPlayer>().MaxPressure += 125;
+			player.statDefense += 4;
 		}
 
 		public override void AddRecipes()
 		{
 			Recipe recipe = CreateRecipe();
-			recipe.AddIngredient(ItemID.DemoniteBar, 10);
-			recipe.AddTile(TileID.Anvils);
+			recipe.AddIngredient(ItemID.Bone, 25);
+			recipe.AddIngredient<Content.Items.Armor.Squad_Member>();
+			recipe.AddTile(TileID.Hellforge);
 			recipe.Register();
-
-			Recipe recipe2 = CreateRecipe();
-			recipe2.AddIngredient(ItemID.CrimtaneBar, 10);
-			recipe2.AddTile(TileID.Anvils);
-			recipe2.Register();
-
-
 		}
 	}
 }
