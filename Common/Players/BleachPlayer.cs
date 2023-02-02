@@ -12,6 +12,7 @@ namespace BleachMod.Common.Players{
         public float PressureCostModifier = 1f;
         public int PressureRegenAmount = 1;
         public bool hasBadge = false;
+        public bool hasCloak = false;
         public override void Initialize() {
             MaxPressure = 0;
             C_Pressure = 0;
@@ -35,6 +36,7 @@ namespace BleachMod.Common.Players{
             PressureRegenRate = 1f;
             PressureRegenAmount = 1;
             hasBadge = false;
+            hasCloak = false;
         }
 
         public override void clientClone(ModPlayer clientClone)
