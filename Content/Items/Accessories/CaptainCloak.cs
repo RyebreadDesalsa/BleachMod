@@ -7,6 +7,7 @@ using Terraria.ModLoader;
 
 namespace BleachMod.Content.Items.Accessories
 {
+    [AutoloadEquip(EquipType.Front, EquipType.Back)]
     internal class CaptainCloak : ModItem    
     {
         public override void SetStaticDefaults()
@@ -14,6 +15,7 @@ namespace BleachMod.Content.Items.Accessories
             Tooltip.SetDefault("The cloak of a Captain \nAllows for the use of Flash Step\n10% Increased Shinigami Damage\nIncreased spiritual pressure recovery\nDoes not work with the Lieutenant's Badge");
 
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+            
         }
 
         public override void SetDefaults()
@@ -21,6 +23,7 @@ namespace BleachMod.Content.Items.Accessories
             Item.width = 40;
             Item.height = 40;
             Item.accessory = true;
+
 
         }
 
