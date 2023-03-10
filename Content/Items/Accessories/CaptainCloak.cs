@@ -7,7 +7,7 @@ using Terraria.ModLoader;
 
 namespace BleachMod.Content.Items.Accessories
 {
-    [AutoloadEquip(EquipType.Front, EquipType.Back)]
+    [AutoloadEquip(EquipType.Waist, EquipType.Back)]
     internal class CaptainCloak : ModItem    
     {
         public override void SetStaticDefaults()
