@@ -17,7 +17,7 @@ namespace BleachMod.Common.Players
 
 			if (KeybindSystem.FSKeybind.JustPressed)
 			{
-				if (Player.GetModPlayer<BleachPlayer>().C_Pressure >= 50 && Player.GetModPlayer<BleachPlayer>().hasBadge)
+				if (Player.GetModPlayer<BleachPlayer>().C_Pressure >= 50 && (Player.GetModPlayer<BleachPlayer>().hasBadge || Player.GetModPlayer<BleachPlayer>().hasCloak))
 				{
 					Microsoft.Xna.Framework.Vector2 tploc = default(Microsoft.Xna.Framework.Vector2);
 					tploc.X = (float)Main.mouseX + Main.screenPosition.X;
