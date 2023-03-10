@@ -103,17 +103,10 @@ namespace BleachMod.Content.Items.Weapons.ShinigamiSwords
 		}
 		private void OnBankaiRelease(Player player)
 		{
-			int loc = -1;
-			for (int i = 0; i < 10; i++)
+
+			if (player.GetModPlayer<BleachPlayer>().C_Pressure > 70)
 			{
-				if (player.inventory.GetValue(i).ToString() == player.HeldItem.ToString() && player.HeldItem.Name == "RSenbonzakura")
-				{
-					loc = i;
-				}
-			}
-			if (loc != -1)
-			{
-				player.GetModPlayer<BleachPlayer>().C_Pressure -= 50;
+				player.GetModPlayer<BleachPlayer>().C_Pressure -= 70;
 				if (player.direction == -1)
 				{
 					for (int i = 0; i < 120; i += 40)
@@ -140,10 +133,11 @@ namespace BleachMod.Content.Items.Weapons.ShinigamiSwords
 						Projectile.NewProjectile(player.GetSource_FromAI(), spV, newV, ModContent.ProjectileType<Projectiles.SenbonGuide>(), 0, 0, Main.myPlayer);
 					}
 				}
-
 				CombatText.NewText(Main.LocalPlayer.getRect(), Color.Pink, "Bankai \n Senbonzakura Kageyoshi");
-				player.inventory.SetValue(new Item(ModContent.ItemType<SenbonzakuraKageyoshi>()), loc);
+				player.inventory.SetValue(new Item(ModContent.ItemType<SenbonzakuraKageyoshi>()), player.selectedItem);
 			}
+
+		
 
 		}
 		public override void HoldItem(Player player)

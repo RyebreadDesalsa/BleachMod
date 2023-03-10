@@ -102,20 +102,8 @@ namespace BleachMod.Content.Items.Weapons.ShinigamiSwords
 		}
 		private void OnBankaiRelease(Player player)
 		{
-			int loc = -1;
-			for (int i = 0; i < 10; i++)
-			{
-				if (player.inventory.GetValue(i).ToString() == player.HeldItem.ToString() && player.HeldItem.Name == "RShinso")
-				{
-					loc = i;
-				}
-			}
-			if (loc != -1)
-			{
-				CombatText.NewText(Main.LocalPlayer.getRect(), Color.Pink, "Bankai \n KamishiniNoYari");
-				player.inventory.SetValue(new Item(ModContent.ItemType<KamishiniNoYari>()), loc);
-			}
-
+			CombatText.NewText(Main.LocalPlayer.getRect(), Color.Pink, "Bankai \n KamishiniNoYari");
+			player.inventory.SetValue(new Item(ModContent.ItemType<KamishiniNoYari>()), player.selectedItem);
 		}
 
 		public override void HoldItem(Player player)

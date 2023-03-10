@@ -12,6 +12,7 @@ namespace BleachMod.Content.Items.Weapons.ShinigamiSwords
 {
 	internal class TensaZangetsu : ModItem
 	{
+
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Tensa Zangetsu");
@@ -79,6 +80,8 @@ namespace BleachMod.Content.Items.Weapons.ShinigamiSwords
 			{
 				player.inventory.SetValue(new Item(ModContent.ItemType<Zangetsu>()), loc);
 			}
+			
+		
 		}
 
 		public override bool? UseItem(Player player)
