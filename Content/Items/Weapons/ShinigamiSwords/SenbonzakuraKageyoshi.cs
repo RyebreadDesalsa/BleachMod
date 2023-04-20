@@ -62,7 +62,7 @@ namespace BleachMod.Content.Items.Weapons.ShinigamiSwords
 		{
 			if (player.channel)
 			{
-				player.GetModPlayer<BleachPlayer>().PressureRegenAmount -= 1;
+				player.GetModPlayer<BleachPlayer>().PressureRegenAmount -= 2;
 				if(ShotTimer == 10)
                 {
 					ShotTimer = 0;

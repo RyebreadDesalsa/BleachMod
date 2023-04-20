@@ -77,7 +77,7 @@ namespace BleachMod.Content.Items.Weapons.ShinigamiSwords
 			}
 			else
 			{
-				player.GetModPlayer<BleachPlayer>().C_Pressure -= 5;
+				player.GetModPlayer<BleachPlayer>().C_Pressure -= 4;
 				Projectile.NewProjectileDirect(source, position, velocity*100, ModContent.ProjectileType<Projectiles.ShinsoBlade>(), damage, knockback, player.whoAmI);
 				return true;
 

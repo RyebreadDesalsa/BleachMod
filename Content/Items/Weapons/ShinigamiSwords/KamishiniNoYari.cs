@@ -78,7 +78,7 @@ namespace BleachMod.Content.Items.Weapons.ShinigamiSwords
 			}
 			else
 			{
-				player.GetModPlayer<BleachPlayer>().C_Pressure -= 5;
+				player.GetModPlayer<BleachPlayer>().C_Pressure -= 3;
 				Vector2 newVelocity = velocity.RotatedByRandom(MathHelper.ToRadians(7));
 
 				// Create a projectile.
