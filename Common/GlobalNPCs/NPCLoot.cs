@@ -10,8 +10,7 @@ namespace BleachMod.Common.GlobalNPCs
     {
         public override void ModifyNPCLoot(NPC npc, Terraria.ModLoader.NPCLoot npcLoot)
 		{
-			// Editing an existing drop rule, but for a boss
-			// In addition to this code, we also do similar code in Common/GlobalItems/BossBagLoot.cs to edit the boss bag loot. Remember to do both if your edits should affect boss bags as well.
+
 			if (npc.type == NPCID.WallofFlesh)
 			{
 				foreach (var rule in npcLoot.Get())
@@ -24,6 +23,7 @@ namespace BleachMod.Common.GlobalNPCs
 					}
 				}
 			}
+			
 
 		}
 	}
