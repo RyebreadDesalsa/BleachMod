@@ -5,11 +5,11 @@ using Terraria.ModLoader;
 
 namespace BleachMod.Content.Classes
 {
-	public class Shinigami : DamageClass
+	public class ShinigamiDamage : DamageClass
 	{
         public override void SetStaticDefaults()
         {
-			((DamageClass)this).ClassName.SetDefault("Shinigami damage");
+			// ((DamageClass)this).DisplayName.SetDefault("Shinigami damage");
 			base.SetStaticDefaults();
         }
         public override StatInheritanceData GetModifierInheritance(DamageClass damageClass) {
@@ -17,11 +17,11 @@ namespace BleachMod.Content.Classes
 				return StatInheritanceData.Full;
 
 			return new StatInheritanceData(
-				damageInheritance: 1f,
-				critChanceInheritance: 1f,
-				attackSpeedInheritance: 1f,
-				armorPenInheritance: 1f,
-				knockbackInheritance: 1f
+				damageInheritance: 0f,
+				critChanceInheritance: 0f,
+				attackSpeedInheritance: 0f,
+				armorPenInheritance: 0f,
+				knockbackInheritance: 0f
 			);
 
 		}

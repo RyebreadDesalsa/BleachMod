@@ -13,8 +13,8 @@ namespace BleachMod.Content.Items.Weapons.ShinigamiSwords
     {
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("KamishiniNoYari");
-			Tooltip.SetDefault("A Zanpakuto belonging to a Snake like Captain.");
+			// DisplayName.SetDefault("KamishiniNoYari");
+			// Tooltip.SetDefault("A Zanpakuto belonging to a Snake like Captain.");
 			ItemID.Sets.ItemsThatAllowRepeatedRightClick[Type] = true;
 
 		}
@@ -22,7 +22,7 @@ namespace BleachMod.Content.Items.Weapons.ShinigamiSwords
 		public override void SetDefaults()
 		{
 			Item.damage = 80;
-			Item.DamageType = ModContent.GetInstance<Shinigami>();
+			Item.DamageType = ModContent.GetInstance<ShinigamiDamage>();
 			Item.width = 24;
 			Item.height = 28;
 			Item.useTime = 5;
@@ -60,10 +60,10 @@ namespace BleachMod.Content.Items.Weapons.ShinigamiSwords
 			}
 			return base.CanUseItem(player);
 		}
-        public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
+        public override void ModifyHitNPC(Player player, NPC target, ref NPC.HitModifiers modifiers)
         {
 			target.AddBuff(BuffID.Venom, 60);
-			base.OnHitNPC(player, target, damage, knockBack, crit);
+			base.ModifyHitNPC(player, target, ref modifiers);
         }
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 		{
@@ -78,7 +78,7 @@ namespace BleachMod.Content.Items.Weapons.ShinigamiSwords
 			}
 			else
 			{
-				player.GetModPlayer<BleachPlayer>().C_Pressure -= 5;
+				player.GetModPlayer<BleachPlayer>().C_Pressure -= 3;
 				Vector2 newVelocity = velocity.RotatedByRandom(MathHelper.ToRadians(7));
 
 				// Create a projectile.
@@ -98,7 +98,7 @@ namespace BleachMod.Content.Items.Weapons.ShinigamiSwords
 			int loc = -1;
 			for (int i = 0; i < 10; i++)
 			{
-				if (player.inventory.GetValue(i).ToString()[8..23].Equals("KamishiniNoYari"))
+				if (player.inventory.GetValue(i).ToString()[8..25].Equals("Kamishini No Yari"))
 				{
 					
 					loc = i;
@@ -132,7 +132,7 @@ namespace BleachMod.Content.Items.Weapons.ShinigamiSwords
 		}
 		public override void UpdateInventory(Player player)
 		{
-			if (player.HeldItem.Name != "KamishiniNoYari")
+			if (player.HeldItem.Name != "Kamishini No Yari")
 			{
 				OnBankaiSeal(player);
 			}

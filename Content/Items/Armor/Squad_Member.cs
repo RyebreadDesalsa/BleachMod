@@ -20,8 +20,8 @@ namespace BleachMod.Content.Items.Armor
 		public override void SetStaticDefaults()
 		{
 			base.SetStaticDefaults();
-			DisplayName.SetDefault("Squad Member Rank");
-			Tooltip.SetDefault("The standard rank of a Shinigami.");
+			// DisplayName.SetDefault("Squad Member Rank");
+			// Tooltip.SetDefault("The standard rank of a Shinigami.");
             ArmorIDs.Head.Sets.DrawFullHair[Item.headSlot] = true;
 		}
 

@@ -15,7 +15,7 @@ namespace BleachMod.Content.Projectiles
 		private int timer = 0;
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Petal");
+			// DisplayName.SetDefault("Petal");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 5;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 		}
@@ -27,7 +27,7 @@ namespace BleachMod.Content.Projectiles
 			Projectile.aiStyle = -1; 
 			Projectile.friendly = true;
 			Projectile.hostile = false;
-			Projectile.DamageType = ModContent.GetInstance<Shinigami>();
+			Projectile.DamageType = ModContent.GetInstance<ShinigamiDamage>();
 			Projectile.penetrate = 5;
 			Projectile.timeLeft = 90;
 			Projectile.alpha = 0;

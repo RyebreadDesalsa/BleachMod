@@ -11,7 +11,7 @@ namespace BleachMod.Content.Items.Accessories
     {
         public override void SetStaticDefaults()
         {
-            Tooltip.SetDefault("15% increased Shinigami damage");
+            // Tooltip.SetDefault("15% increased Shinigami damage");
 
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
         }
@@ -26,7 +26,7 @@ namespace BleachMod.Content.Items.Accessories
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            player.GetDamage(ModContent.GetInstance<Shinigami>()) *= 1.15f;
+            player.GetDamage(ModContent.GetInstance<ShinigamiDamage>()) *= 1.15f;
         }
     }
 }

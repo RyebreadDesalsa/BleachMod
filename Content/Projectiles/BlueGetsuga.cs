@@ -14,7 +14,7 @@ namespace BleachMod.Content.Projectiles
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Blue Getsugatensho"); 
+			// DisplayName.SetDefault("Blue Getsugatensho"); 
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 5;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0; 
 		}
@@ -26,7 +26,7 @@ namespace BleachMod.Content.Projectiles
 			Projectile.aiStyle = 1; 
 			Projectile.friendly = true; 
 			Projectile.hostile = false; 
-			Projectile.DamageType = ModContent.GetInstance<Shinigami>(); 
+			Projectile.DamageType = ModContent.GetInstance<ShinigamiDamage>(); 
 			Projectile.penetrate = 5; 
 			Projectile.timeLeft = 600;
 			Projectile.alpha = 255; 
@@ -96,7 +96,43 @@ namespace BleachMod.Content.Projectiles
 
 			return true;
 		}
+        public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
+        {
+			Projectile.velocity *= 0.85f;
+			base.ModifyHitNPC(target, ref modifiers);
+        }
 
-		
+		public override bool PreAI()
+        {
+			Player player = Main.player[Projectile.owner];
+			float damagemod = player.GetTotalDamage(ModContent.GetInstance<ShinigamiDamage>()).Multiplicative;
+			float scaleFactor = (float)(Math.Pow(Projectile.velocity.X, 2)+ Math.Pow(Projectile.velocity.Y, 2));
+			scaleFactor = (float) Math.Pow(scaleFactor, 0.5);
+			if (scaleFactor < 5)
+			{
+				scaleFactor = 5;
+			}
+			scaleFactor = scaleFactor / 5;
+			Projectile.scale = scaleFactor;
+			Projectile.damage = 25 + (int)((Math.Pow(12, scaleFactor)) * damagemod);
+			return base.PreAI();
+        }
+        public override void ModifyDamageHitbox(ref Rectangle hitbox)
+		{
+			hitbox = new Rectangle(hitbox.X, hitbox.Y, 64, 64);
+			float scaleFactor = (float)(Math.Pow(Projectile.velocity.X, 2) + Math.Pow(Projectile.velocity.Y, 2));
+			scaleFactor = (float)Math.Pow(scaleFactor, 0.5);
+			if (scaleFactor < 5)
+            {
+				scaleFactor = 5;
+            }
+			hitbox = new Rectangle((int)(hitbox.X - 2*scaleFactor), (int)(hitbox.Y-2*scaleFactor), (int)(hitbox.Width*(scaleFactor/5)), (int)(hitbox.Height*(scaleFactor / 5)));
+			
+			
+
+			base.ModifyDamageHitbox(ref hitbox);
+		}
+
+
 	}
 }

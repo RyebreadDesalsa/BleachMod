@@ -11,7 +11,7 @@ namespace BleachMod.Content.Items.Accessories
     {
         public override void SetStaticDefaults()
         {
-            Tooltip.SetDefault("The badge of a Lieutenant \nAllows for the use of Flash Step\n5% Increased Shinigami Damage\nIncreased spiritual pressure recovery\nDoes not work with the Captains Cloak");
+            // Tooltip.SetDefault("The badge of a Lieutenant \nAllows for the use of Flash Step\n5% Increased Shinigami Damage\nIncreased spiritual pressure recovery\nDoes not work with the Captains Cloak");
 
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
         }
@@ -30,7 +30,7 @@ namespace BleachMod.Content.Items.Accessories
             {
                 player.GetModPlayer<BleachPlayer>().PressureRegenAmount += 1;
                 player.GetModPlayer<BleachPlayer>().hasBadge = true;
-                player.GetDamage(ModContent.GetInstance<Shinigami>()) *= 1.05f;
+                player.GetDamage(ModContent.GetInstance<ShinigamiDamage>()) *= 1.05f;
             }
         }
         public override void AddRecipes()

@@ -14,8 +14,8 @@ namespace BleachMod.Content.Items.Weapons.ShinigamiSwords
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Senbonzakura");
-			Tooltip.SetDefault("A Zanpakuto belonging to a Noble Captain.");
+			// DisplayName.SetDefault("Senbonzakura");
+			// Tooltip.SetDefault("A Zanpakuto belonging to a Noble Captain.");
 			ItemID.Sets.ItemsThatAllowRepeatedRightClick[Type] = true;
 
 		}
@@ -23,7 +23,7 @@ namespace BleachMod.Content.Items.Weapons.ShinigamiSwords
 		public override void SetDefaults()
 		{
 			Item.damage = 50;
-			Item.DamageType = ModContent.GetInstance<Shinigami>();
+			Item.DamageType = ModContent.GetInstance<ShinigamiDamage>();
 			Item.width = 40;
 			Item.height = 40;
 			Item.useTime = 20;
@@ -38,64 +38,26 @@ namespace BleachMod.Content.Items.Weapons.ShinigamiSwords
 
 		private void OnRelease(Player player)
 		{
-			int loc = -1;
-			for (int i = 0; i < 10; i++)
-			{
-				if (player.inventory.GetValue(i).ToString() == player.HeldItem.ToString() && player.HeldItem.Name == "Senbonzakura")
-				{
-					loc = i;
-				}
-			}
-			if (loc != -1)
-            {
-                CombatText.NewText(Main.LocalPlayer.getRect(), Color.Pink, "Scatter \n Senbonzakura");
-
-                player.inventory.SetValue(new Item(ModContent.ItemType<RSenbonzakura>()), loc);
-			}
-			
+			CombatText.NewText(Main.LocalPlayer.getRect(), Color.Pink, "Scatter \n Senbonzakura");
+			player.inventory.SetValue(new Item(ModContent.ItemType<RSenbonzakura>()), player.selectedItem);
 		}
 		private void OnBankaiRelease(Player player)
 		{
-			int loc = -1;
-			for (int i = 0; i < 10; i++)
+			
+			if (player.GetModPlayer<BleachPlayer>().C_Pressure > 70)
 			{
-				if (player.inventory.GetValue(i).ToString() == player.HeldItem.ToString() && player.HeldItem.Name == "Senbonzakura")
-				{
-					loc = i;
-				}
-			}
-			if (loc != -1 && player.GetModPlayer<BleachPlayer>().C_Pressure > 70)
-			{
+				
 				player.GetModPlayer<BleachPlayer>().C_Pressure -= 70;
-				if (player.direction == -1)
-                {
-					for (int i = 0; i < 120; i += 40)
-					{
-						Vector2 newV = new Vector2();
-						newV.X = 0f;
-						newV.Y = 0f;
-						Vector2 spV = player.Center;
-						spV.X += (50 + i);
-						spV.Y += 3;
-						Projectile.NewProjectile(player.GetSource_FromAI(), spV, newV, ModContent.ProjectileType<Projectiles.SenbonGuide>(), 0, 0, Main.myPlayer);
-					}
-				}
-                else
-                {
-					for (int i = 0; i < 120; i += 40)
-					{
-						Vector2 newV = new Vector2();
-						newV.X = 0f;
-						newV.Y = 0f;
-						Vector2 spV = player.Center;
-						spV.X -= (50 + i);
-						spV.Y += 3;
-						Projectile.NewProjectile(player.GetSource_FromAI(), spV, newV, ModContent.ProjectileType<Projectiles.SenbonGuide>(), 0, 0, Main.myPlayer);
-					}
-				}
+				Vector2 newV = new Vector2();
+				newV.X = 0f;
+				newV.Y = 0f;
+				Vector2 spV = player.Center;
+				spV.X += 50;
+				spV.Y += 3;
+				Projectile.NewProjectile(player.GetSource_FromAI(), spV, newV, ModContent.ProjectileType<Projectiles.SenbonTransition>(), 0, 0, Main.myPlayer);
 
 				CombatText.NewText(Main.LocalPlayer.getRect(), Color.Pink, "Bankai \n Senbonzakura Kageyoshi");
-				player.inventory.SetValue(new Item(ModContent.ItemType<SenbonzakuraKageyoshi>()), loc);
+				player.inventory.SetValue(new Item(ModContent.ItemType<SenbonzakuraKageyoshi>()), player.selectedItem);
 			}
 
 		}

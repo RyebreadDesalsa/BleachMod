@@ -14,8 +14,8 @@ namespace BleachMod.Content.Items.Weapons.ShinigamiSwords
     {
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Gegetsuburi");
-			Tooltip.SetDefault("A Zanpakuto belonging to a rich coward.");
+			// DisplayName.SetDefault("Gegetsuburi");
+			// Tooltip.SetDefault("A Zanpakuto belonging to a rich coward.");
 			ItemID.Sets.ItemsThatAllowRepeatedRightClick[Type] = true;
 
 		}
@@ -23,7 +23,7 @@ namespace BleachMod.Content.Items.Weapons.ShinigamiSwords
 		public override void SetDefaults()
 		{
 			Item.damage = 50;
-			Item.DamageType = ModContent.GetInstance<Shinigami>();
+			Item.DamageType = ModContent.GetInstance<ShinigamiDamage>();
 			Item.width = 40;
 			Item.height = 40;
 			Item.useTime = 20;
@@ -38,21 +38,8 @@ namespace BleachMod.Content.Items.Weapons.ShinigamiSwords
 
 		private void OnRelease(Player player)
 		{
-			int loc = -1;
-			for (int i = 0; i < 10; i++)
-			{
-				if (player.inventory.GetValue(i).ToString() == player.HeldItem.ToString() && player.HeldItem.Name == "Gegetsuburi")
-				{
-					loc = i;
-				}
-			}
-			if (loc != -1)
-			{
-				CombatText.NewText(Main.LocalPlayer.getRect(), Color.Blue, "Crush \n Gegetsuburi");
-
-				player.inventory.SetValue(new Item(ModContent.ItemType<RGegetsuburi>()), loc);
-			}
-
+			CombatText.NewText(Main.LocalPlayer.getRect(), Color.Blue, "Crush \n Gegetsuburi");
+			player.inventory.SetValue(new Item(ModContent.ItemType<RGegetsuburi>()), player.selectedItem);
 		}
 		
 		public override void AddRecipes()

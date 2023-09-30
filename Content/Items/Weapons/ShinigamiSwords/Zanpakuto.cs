@@ -9,13 +9,13 @@ namespace BleachMod.Content.Items.Weapons.ShinigamiSwords
 	{
 		public override void SetStaticDefaults()
 		{ 
-			Tooltip.SetDefault("A Zanpakuto Asauchi.");
+			// Tooltip.SetDefault("A Zanpakuto Asauchi.");
 		}
 
 		public override void SetDefaults()
 		{
 			Item.damage = 50;
-			Item.DamageType = ModContent.GetInstance<Shinigami>();
+			Item.DamageType = ModContent.GetInstance<ShinigamiDamage>();
 			Item.width = 40;
 			Item.height = 40;
 			Item.useTime = 20;

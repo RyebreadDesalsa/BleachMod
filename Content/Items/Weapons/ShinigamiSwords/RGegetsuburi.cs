@@ -12,8 +12,8 @@ namespace BleachMod.Content.Items.Weapons.ShinigamiSwords
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("RGegetsuburi");
-			Tooltip.SetDefault("");
+			// DisplayName.SetDefault("RGegetsuburi");
+			// Tooltip.SetDefault("");
 
 			// This line will make the damage shown in the tooltip twice the actual Item.damage. This multiplier is used to adjust for the dynamic damage capabilities of the projectile.
 			// When thrown directly at enemies, the flail projectile will deal double Item.damage, matching the tooltip, but deals normal damage in other modes.
@@ -35,7 +35,7 @@ namespace BleachMod.Content.Items.Weapons.ShinigamiSwords
 			Item.UseSound = SoundID.Item1; // The sound that this item makes when used
 			Item.rare = ItemRarityID.Green; // The color of the name of your item
 			Item.value = Item.sellPrice(gold: 1, silver: 50); // Sells for 1 gold 50 silver
-			Item.DamageType = ModContent.GetInstance<Shinigami>();
+			Item.DamageType = ModContent.GetInstance<ShinigamiDamage>();
 			Item.channel = true;
 			Item.noMelee = true; // This makes sure the item does not deal damage from the swinging animation
 		}
@@ -45,7 +45,7 @@ namespace BleachMod.Content.Items.Weapons.ShinigamiSwords
 			int loc = -1;
 			for (int i = 0; i < 10; i++)
 			{
-				if (player.inventory.GetValue(i).ToString()[8..20].Equals("RGegetsuburi"))
+				if (player.inventory.GetValue(i).ToString()[8..21].Equals("R Gegetsuburi"))
 				{
 					loc = i;
 				}
@@ -78,7 +78,7 @@ namespace BleachMod.Content.Items.Weapons.ShinigamiSwords
 		}
 		public override void UpdateInventory(Player player)
 		{
-			if (player.HeldItem.Name != "RGegetsuburi")
+			if (player.HeldItem.Name != "R Gegetsuburi")
 			{
 				OnSeal(player);
 			}

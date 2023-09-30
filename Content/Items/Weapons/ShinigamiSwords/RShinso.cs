@@ -14,8 +14,8 @@ namespace BleachMod.Content.Items.Weapons.ShinigamiSwords
     {
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("RShinso");
-			Tooltip.SetDefault("A Zanpakuto belonging to a Snake like Captain.");
+			// DisplayName.SetDefault("RShinso");
+			// Tooltip.SetDefault("A Zanpakuto belonging to a Snake like Captain.");
 			ItemID.Sets.ItemsThatAllowRepeatedRightClick[Type] = false;
 
 		}
@@ -23,7 +23,7 @@ namespace BleachMod.Content.Items.Weapons.ShinigamiSwords
 		public override void SetDefaults()
 		{
 			Item.damage = 60;
-			Item.DamageType = ModContent.GetInstance<Shinigami>();
+			Item.DamageType = ModContent.GetInstance<ShinigamiDamage>();
 			Item.width = 20;
 			Item.height = 20;
 			Item.useTime = 7;
@@ -77,7 +77,7 @@ namespace BleachMod.Content.Items.Weapons.ShinigamiSwords
 			}
 			else
 			{
-				player.GetModPlayer<BleachPlayer>().C_Pressure -= 5;
+				player.GetModPlayer<BleachPlayer>().C_Pressure -= 4;
 				Projectile.NewProjectileDirect(source, position, velocity*100, ModContent.ProjectileType<Projectiles.ShinsoBlade>(), damage, knockback, player.whoAmI);
 				return true;
 
@@ -90,7 +90,7 @@ namespace BleachMod.Content.Items.Weapons.ShinigamiSwords
 			int loc = -1;
 			for (int i = 0; i < 10; i++)
 			{
-				if (player.inventory.GetValue(i).ToString()[8..15].Equals("RShinso"))
+				if (player.inventory.GetValue(i).ToString()[8..16].Equals("R Shinso"))
 				{
 					loc = i;
 				}
@@ -102,20 +102,8 @@ namespace BleachMod.Content.Items.Weapons.ShinigamiSwords
 		}
 		private void OnBankaiRelease(Player player)
 		{
-			int loc = -1;
-			for (int i = 0; i < 10; i++)
-			{
-				if (player.inventory.GetValue(i).ToString() == player.HeldItem.ToString() && player.HeldItem.Name == "RShinso")
-				{
-					loc = i;
-				}
-			}
-			if (loc != -1)
-			{
-				CombatText.NewText(Main.LocalPlayer.getRect(), Color.Pink, "Bankai \n KamishiniNoYari");
-				player.inventory.SetValue(new Item(ModContent.ItemType<KamishiniNoYari>()), loc);
-			}
-
+			CombatText.NewText(Main.LocalPlayer.getRect(), Color.Pink, "Bankai \n KamishiniNoYari");
+			player.inventory.SetValue(new Item(ModContent.ItemType<KamishiniNoYari>()), player.selectedItem);
 		}
 
 		public override void HoldItem(Player player)
@@ -141,7 +129,7 @@ namespace BleachMod.Content.Items.Weapons.ShinigamiSwords
 		}
 		public override void UpdateInventory(Player player)
 		{
-			if (player.HeldItem.Name != "RShinso")
+			if (player.HeldItem.Name != "R Shinso")
 			{
 				OnSeal(player);
 			}
