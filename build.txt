@@ -1,4 +1,4 @@
 displayName = Bleach Mod
 author = RyeBread
-version = 0.2.1.1
+version = 0.3
 homepage = https://github.com/RyebreadDesalsa/BleachMod
