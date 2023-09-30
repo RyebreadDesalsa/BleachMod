@@ -14,13 +14,13 @@ namespace BleachMod.Content.Projectiles
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Spear");
+			// DisplayName.SetDefault("Spear");
 		}
 
 		public override void SetDefaults()
 		{
 			Projectile.CloneDefaults(ProjectileID.Spear); // Clone the default values for a vanilla spear. Spear specific values set for width, height, aiStyle, friendly, penetrate, tileCollide, scale, hide, ownerHitCheck, and melee.
-			Projectile.DamageType = ModContent.GetInstance<Shinigami>();
+			Projectile.DamageType = ModContent.GetInstance<ShinigamiDamage>();
 		}
 
 		public override bool PreAI()

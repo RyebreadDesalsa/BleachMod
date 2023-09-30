@@ -12,9 +12,9 @@ namespace BleachMod.Content.Items.Armor
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Shinigami Sandals");
-			Tooltip.SetDefault("The standard sandals of a Shinigami."
-				+ "\n5% increased movement speed");
+			// DisplayName.SetDefault("Shinigami Sandals");
+			/* Tooltip.SetDefault("The standard sandals of a Shinigami."
+				+ "\n5% increased movement speed"); */
 		}
 
 		public override void SetDefaults()

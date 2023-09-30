@@ -20,8 +20,8 @@ namespace BleachMod.Content.Items.Armor
 		public override void SetStaticDefaults()
 		{
 			base.SetStaticDefaults();
-			DisplayName.SetDefault("Third Seat Rank");
-			Tooltip.SetDefault("The rank of a Shinigami with some skill.");
+			// DisplayName.SetDefault("Third Seat Rank");
+			// Tooltip.SetDefault("The rank of a Shinigami with some skill.");
 			ArmorIDs.Head.Sets.DrawFullHair[Item.headSlot] = true;
 		}
 

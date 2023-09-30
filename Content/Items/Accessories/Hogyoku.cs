@@ -10,7 +10,7 @@ namespace BleachMod.Content.Items.Accessories
     {
 		public override void SetStaticDefaults()
 		{
-			Tooltip.SetDefault("Gives vast increases to spiritual pressure");
+			// Tooltip.SetDefault("Gives vast increases to spiritual pressure (this is a test item)");
 
 			CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 		}

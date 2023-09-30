@@ -14,14 +14,14 @@ namespace BleachMod.Content.Items.Weapons.ShinigamiSwords
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Nejibana");
-			Tooltip.SetDefault("A Zanpakuto belonging to a lieutenant from a once noble clan.");
+			// DisplayName.SetDefault("Nejibana");
+			// Tooltip.SetDefault("A Zanpakuto belonging to a lieutenant from a once noble clan.");
 		}
 
 		public override void SetDefaults()
 		{
 			Item.damage = 25;
-			Item.DamageType = ModContent.GetInstance<Shinigami>();
+			Item.DamageType = ModContent.GetInstance<ShinigamiDamage>();
 			Item.width = 24;
 			Item.height = 28;
 			Item.useTime = 18;

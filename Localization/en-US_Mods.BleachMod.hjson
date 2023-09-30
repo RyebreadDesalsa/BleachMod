@@ -1,0 +1,166 @@
+Keybinds: {
+	Shikai.DisplayName: Shikai
+	Bankai.DisplayName: Bankai
+	"Flash Step.DisplayName": Flash  Step
+}
+
+Buffs: {
+	NozarashiBuff: {
+		DisplayName: Nozarashi Buff
+		Description: Mods.BleachMod.Buffs.NozarashiBuff.Description
+	}
+}
+
+Items: {
+	CaptainCloak: {
+		DisplayName: Captain Cloak
+		Tooltip: ""
+	}
+
+	Gikon: {
+		DisplayName: Gikon
+		Tooltip: ""
+	}
+
+	Hogyoku: {
+		DisplayName: Hogyoku
+		Tooltip: ""
+	}
+
+	LieutenantBadge: {
+		DisplayName: Lieutenant Badge
+		Tooltip: ""
+	}
+
+	ShinigamiEmblem: {
+		DisplayName: Shinigami Emblem
+		Tooltip: ""
+	}
+
+	Captain_Rank: {
+		DisplayName: Captain_ Rank
+		Tooltip: ""
+	}
+
+	Lieutenant_Rank: {
+		DisplayName: Lieutenant_ Rank
+		Tooltip: ""
+	}
+
+	Shihakusho: {
+		DisplayName: Shihakusho
+		Tooltip: ""
+	}
+
+	Shinigami_Sandals: {
+		DisplayName: Shinigami_ Sandals
+		Tooltip: ""
+	}
+
+	Squad_Member: {
+		DisplayName: Squad_ Member
+		Tooltip: ""
+	}
+
+	Third_Seat_Rank: {
+		DisplayName: Third_ Seat_ Rank
+		Tooltip: ""
+	}
+
+	Gegetsuburi: {
+		DisplayName: Gegetsuburi
+		Tooltip: ""
+	}
+
+	KamishiniNoYari: {
+		DisplayName: Kamishini No Yari
+		Tooltip: ""
+	}
+
+	Nejibana: {
+		DisplayName: Nejibana
+		Tooltip: ""
+	}
+
+	Nozarashi: {
+		DisplayName: Nozarashi
+		Tooltip: ""
+	}
+
+	NozarashiBankai: {
+		DisplayName: Nozarashi Bankai
+		Tooltip: ""
+	}
+
+	RGegetsuburi: {
+		DisplayName: R Gegetsuburi
+		Tooltip: ""
+	}
+
+	RNejibana: {
+		DisplayName: R Nejibana
+		Tooltip: ""
+	}
+
+	RNozarashi: {
+		DisplayName: R Nozarashi
+		Tooltip: ""
+	}
+
+	RSenbonzakura: {
+		DisplayName: R Senbonzakura
+		Tooltip: ""
+	}
+
+	RShinso: {
+		DisplayName: R Shinso
+		Tooltip: ""
+	}
+
+	Senbonzakura: {
+		DisplayName: Senbonzakura
+		Tooltip: ""
+	}
+
+	SenbonzakuraKageyoshi: {
+		DisplayName: Senbonzakura Kageyoshi
+		Tooltip: ""
+	}
+
+	Shinso: {
+		DisplayName: Shinso
+		Tooltip: ""
+	}
+
+	TensaZangetsu: {
+		DisplayName: Tensa Zangetsu
+		Tooltip: ""
+	}
+
+	Zangetsu: {
+		DisplayName: Zangetsu
+		Tooltip: ""
+	}
+
+	Zanpakuto: {
+		DisplayName: Zanpakuto
+		Tooltip: ""
+	}
+}
+
+Projectiles: {
+	BlackGetsuga.DisplayName: Black Getsuga
+	BlueGetsuga.DisplayName: Blue Getsuga
+	DumbPetal.DisplayName: Dumb Petal
+	GegetsuburiProjectile.DisplayName: Gegetsuburi Projectile
+	NejibanaLproj.DisplayName: Nejibana Lproj
+	NejibanaRproj.DisplayName: Nejibana Rproj
+	Petals.DisplayName: Petals
+	SenbonBlade.DisplayName: Senbon Blade
+	SenbonGuide.DisplayName: Senbon Guide
+	SenbonTransition.DisplayName: Senbon Transition
+	ShinsoBlade.DisplayName: Shinso Blade
+	ShinsoHandle.DisplayName: Shinso Handle
+	TensaZangetsuBlade.DisplayName: Tensa Zangetsu Blade
+	ZangetsuBlade.DisplayName: Zangetsu Blade
+}

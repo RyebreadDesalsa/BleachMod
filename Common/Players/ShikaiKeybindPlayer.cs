@@ -13,7 +13,7 @@ namespace BleachMod.Common.Players
 		{
 			if (KeybindSystem.ShikaiKeybind.JustPressed)
 			{	
-				if (Player.HeldItem.CountsAsClass(ModContent.GetInstance<Shinigami>()) && Player.GetModPlayer<BleachPlayer>().C_Pressure >=50)
+				if (Player.HeldItem.CountsAsClass(ModContent.GetInstance<ShinigamiDamage>()) && Player.GetModPlayer<BleachPlayer>().C_Pressure >=50)
                 {
 					Player.altFunctionUse = 3;
 				}

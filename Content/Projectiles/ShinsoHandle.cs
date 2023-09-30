@@ -23,7 +23,7 @@ namespace BleachMod.Content.Projectiles
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Shinso Blade"); // The English name of the projectile
+			// DisplayName.SetDefault("Shinso Blade"); // The English name of the projectile
 		}
 
 		public override void SetDefaults()
@@ -33,7 +33,7 @@ namespace BleachMod.Content.Projectiles
 			Projectile.aiStyle = -1; // The ai style of the projectile, please reference the source code of Terraria
 			Projectile.friendly = true; // Can the projectile deal damage to enemies?
 			Projectile.hostile = false; // Can the projectile deal damage to the player?
-			Projectile.DamageType = ModContent.GetInstance<Shinigami>(); // Is the projectile shoot by a ranged weapon?
+			Projectile.DamageType = ModContent.GetInstance<ShinigamiDamage>(); // Is the projectile shoot by a ranged weapon?
 			Projectile.penetrate = -1; // How many monsters the projectile can penetrate. (OnTileCollide below also decrements penetrate for bounces as well)
 			Projectile.timeLeft = 3000; // The live time for the projectile (60 = 1 second, so 600 is 10 seconds)
 			Projectile.alpha = 0; // The transparency of the projectile, 255 for completely transparent. (aiStyle 1 quickly fades the projectile in) Make sure to delete this if you aren't using an aiStyle that fades in. You'll wonder why your projectile is invisible.

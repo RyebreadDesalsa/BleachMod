@@ -10,14 +10,14 @@ namespace BleachMod.Content.Projectiles
 {
 	public class TensaZangetsuBlade : ModProjectile
 	{
+		private int chargeTool=0;
 		// Define the range of the Spear Projectile. These are overrideable properties, in case you'll want to make a class inheriting from this one.
-		protected virtual float HoldoutRangeMin => 24f;
 		protected virtual float HoldoutRangeMax => 80f;
 		private bool isStart = true;
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Zangetsu");
+			// DisplayName.SetDefault("Zangetsu");
 		}
 
 		public override void SetDefaults()
@@ -25,7 +25,7 @@ namespace BleachMod.Content.Projectiles
 			Projectile.CloneDefaults(ProjectileID.Spear); // Clone the default values for a vanilla spear. Spear specific values set for width, height, aiStyle, friendly, penetrate, tileCollide, scale, hide, ownerHitCheck, and melee.
 			Projectile.width = 66;
 			Projectile.height = 66;
-			Projectile.DamageType = ModContent.GetInstance<Shinigami>();
+			Projectile.DamageType = ModContent.GetInstance<ShinigamiDamage>();
 
 		}
 
@@ -33,6 +33,14 @@ namespace BleachMod.Content.Projectiles
 		{
 
 			Player player = Main.player[Projectile.owner]; // Since we access the owner player instance so much, it's useful to create a helper local variable for this
+			if (player.altFunctionUse == 2)
+            {
+				chargeTool = 5;
+            }
+            else
+            {
+				chargeTool--;
+            }
 			if (player.altFunctionUse == 4)
 			{
 				Projectile.Kill();
@@ -40,7 +48,7 @@ namespace BleachMod.Content.Projectiles
 			int duration = player.itemAnimationMax; // Define the duration the projectile will exist in frames
 
 			player.heldProj = Projectile.whoAmI; // Update the player's held projectile id
-			if (player.channel)
+			if (chargeTool > 0)
 			{
 				Projectile.velocity = Vector2.Normalize(new Vector2(0f, -1f));
 				

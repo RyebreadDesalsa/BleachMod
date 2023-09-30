@@ -15,15 +15,15 @@ namespace BleachMod.Content.Items.Weapons.ShinigamiSwords
 		private int ShotTimer = 0;
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Senbonzakura Kageyoshi");
-			Tooltip.SetDefault("A Zanpakuto belonging to a Noble Captain.");
+			// DisplayName.SetDefault("Senbonzakura Kageyoshi");
+			// Tooltip.SetDefault("A Zanpakuto belonging to a Noble Captain.");
 
 		}
 
 		public override void SetDefaults()
 		{
 			Item.damage = 150;
-			Item.DamageType = ModContent.GetInstance<Shinigami>();
+			Item.DamageType = ModContent.GetInstance<ShinigamiDamage>();
 			Item.width = 40;
 			Item.height = 40;
 			Item.useTime = 20;
@@ -62,6 +62,15 @@ namespace BleachMod.Content.Items.Weapons.ShinigamiSwords
 		{
 			if (player.channel)
 			{
+				if (player.direction == -1)
+                {
+					player.SetCompositeArmFront(true, 0, MathHelper.ToRadians(135));
+				}
+                else
+                {
+					player.SetCompositeArmFront(true, 0, MathHelper.ToRadians(-135));
+				}
+				
 				player.GetModPlayer<BleachPlayer>().PressureRegenAmount -= 2;
 				if(ShotTimer == 10)
                 {

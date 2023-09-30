@@ -10,14 +10,13 @@ namespace BleachMod.Content.Projectiles
 {
 	public class ZangetsuBlade : ModProjectile
 	{
-		// Define the range of the Spear Projectile. These are overrideable properties, in case you'll want to make a class inheriting from this one.
-		protected virtual float HoldoutRangeMin => 24f;
-		protected virtual float HoldoutRangeMax => 120f;
+		private int chargeTool = 0;
+		protected virtual float HoldoutRangeMax => 100f;
 		private bool isStart = true;
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Zangetsu");
+			// DisplayName.SetDefault("Zangetsu");
 		}
 
 		public override void SetDefaults()
@@ -25,7 +24,7 @@ namespace BleachMod.Content.Projectiles
 			Projectile.CloneDefaults(ProjectileID.Spear); // Clone the default values for a vanilla spear. Spear specific values set for width, height, aiStyle, friendly, penetrate, tileCollide, scale, hide, ownerHitCheck, and melee.
 			Projectile.width = 66;
 			Projectile.height = 66;
-			Projectile.DamageType = ModContent.GetInstance<Shinigami>();
+			Projectile.DamageType = ModContent.GetInstance<ShinigamiDamage>();
 
 		}
 
@@ -33,17 +32,25 @@ namespace BleachMod.Content.Projectiles
 		{
 			
 			Player player = Main.player[Projectile.owner]; // Since we access the owner player instance so much, it's useful to create a helper local variable for this
-			if(player.altFunctionUse == 4)
+			if (player.altFunctionUse == 2)
+			{
+				chargeTool = 5;
+			}
+			else
+			{
+				chargeTool--;
+			}
+			if (player.altFunctionUse == 4)
             {
 				Projectile.Kill();
             }
 			int duration = player.itemAnimationMax; // Define the duration the projectile will exist in frames
 
 			player.heldProj = Projectile.whoAmI; // Update the player's held projectile id
-			if (player.channel)
+			if (chargeTool > 0)
 			{
 				Projectile.velocity = Vector2.Normalize(new Vector2(0f, -1f));
-				Projectile.Center = player.Center + new Vector2(0f,-125f);
+				Projectile.Center = player.Center + new Vector2(0f,-85f);
 				// Apply proper rotation to the sprite.
 				if (Projectile.spriteDirection == -1)
 				{
@@ -64,7 +71,6 @@ namespace BleachMod.Content.Projectiles
 				{
 					Projectile.timeLeft = duration;
 				}
-				//Projectile.velocity = Vector2.Normalize(Projectile.velocity);
 				if (isStart)
 				{
 					isStart = false;
@@ -94,12 +100,16 @@ namespace BleachMod.Content.Projectiles
 				if (player.direction == -1)
 				{
 					Projectile.velocity = Projectile.velocity.RotatedBy(progress / 1.6 * -1);
+					player.SetCompositeArmFront(true, 0, progress +20);
+
 				}
 				else
 				{
 					Projectile.velocity = Projectile.velocity.RotatedBy(progress / 1.6 * 1);
+					player.SetCompositeArmFront(true, 0, -(progress) - 20);
 				}
 				Projectile.Center = player.Center + Projectile.velocity * (HoldoutRangeMax);
+				//player.SetCompositeArmFront(true, 0, -(progress)-20);
 
 
 				// Apply proper rotation to the sprite.
@@ -119,7 +129,7 @@ namespace BleachMod.Content.Projectiles
 		}
 		public override void ModifyDamageHitbox(ref Rectangle hitbox)
 		{
-            if (Main.player[Projectile.owner].channel)
+            if (chargeTool > 0)
             {
 				hitbox = new Rectangle(hitbox.X, hitbox.Y + 50, hitbox.Width, hitbox.Height);
 			}

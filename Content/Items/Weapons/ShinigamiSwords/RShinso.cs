@@ -14,8 +14,8 @@ namespace BleachMod.Content.Items.Weapons.ShinigamiSwords
     {
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("RShinso");
-			Tooltip.SetDefault("A Zanpakuto belonging to a Snake like Captain.");
+			// DisplayName.SetDefault("RShinso");
+			// Tooltip.SetDefault("A Zanpakuto belonging to a Snake like Captain.");
 			ItemID.Sets.ItemsThatAllowRepeatedRightClick[Type] = false;
 
 		}
@@ -23,7 +23,7 @@ namespace BleachMod.Content.Items.Weapons.ShinigamiSwords
 		public override void SetDefaults()
 		{
 			Item.damage = 60;
-			Item.DamageType = ModContent.GetInstance<Shinigami>();
+			Item.DamageType = ModContent.GetInstance<ShinigamiDamage>();
 			Item.width = 20;
 			Item.height = 20;
 			Item.useTime = 7;
@@ -90,7 +90,7 @@ namespace BleachMod.Content.Items.Weapons.ShinigamiSwords
 			int loc = -1;
 			for (int i = 0; i < 10; i++)
 			{
-				if (player.inventory.GetValue(i).ToString()[8..15].Equals("RShinso"))
+				if (player.inventory.GetValue(i).ToString()[8..16].Equals("R Shinso"))
 				{
 					loc = i;
 				}
@@ -129,7 +129,7 @@ namespace BleachMod.Content.Items.Weapons.ShinigamiSwords
 		}
 		public override void UpdateInventory(Player player)
 		{
-			if (player.HeldItem.Name != "RShinso")
+			if (player.HeldItem.Name != "R Shinso")
 			{
 				OnSeal(player);
 			}

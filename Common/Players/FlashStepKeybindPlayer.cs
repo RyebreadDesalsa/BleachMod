@@ -40,7 +40,7 @@ namespace BleachMod.Common.Players
 					if (!((Main.tile[num, num2].WallType == 87 && (double)num2 > Main.worldSurface && !NPC.downedPlantBoss) || Collision.SolidCollision(tploc, Player.width, Player.height)))
 					{
 						Player.Teleport(tploc, 3);
-						NetMessage.SendData(MessageID.Teleport, -1, -1, null, 0, Player.whoAmI, tploc.X, tploc.Y, 1);
+						NetMessage.SendData(MessageID.TeleportEntity, -1, -1, null, 0, Player.whoAmI, tploc.X, tploc.Y, 1);
 						Player.GetModPlayer<BleachPlayer>().C_Pressure -= 50;
 					}
 				}

@@ -14,8 +14,8 @@ namespace BleachMod.Content.Items.Weapons.ShinigamiSwords
     {
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Gegetsuburi");
-			Tooltip.SetDefault("A Zanpakuto belonging to a rich coward.");
+			// DisplayName.SetDefault("Gegetsuburi");
+			// Tooltip.SetDefault("A Zanpakuto belonging to a rich coward.");
 			ItemID.Sets.ItemsThatAllowRepeatedRightClick[Type] = true;
 
 		}
@@ -23,7 +23,7 @@ namespace BleachMod.Content.Items.Weapons.ShinigamiSwords
 		public override void SetDefaults()
 		{
 			Item.damage = 50;
-			Item.DamageType = ModContent.GetInstance<Shinigami>();
+			Item.DamageType = ModContent.GetInstance<ShinigamiDamage>();
 			Item.width = 40;
 			Item.height = 40;
 			Item.useTime = 20;

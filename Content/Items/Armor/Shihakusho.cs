@@ -19,8 +19,8 @@ namespace BleachMod.Content.Items.Armor
 
         public override void SetStaticDefaults() {
 			base.SetStaticDefaults();
-			DisplayName.SetDefault("Shinigami Shihakusho");
-			Tooltip.SetDefault("The standard uniform of a Shinigami.");
+			// DisplayName.SetDefault("Shinigami Shihakusho");
+			// Tooltip.SetDefault("The standard uniform of a Shinigami.");
 		}
 
 		public override void SetDefaults() {

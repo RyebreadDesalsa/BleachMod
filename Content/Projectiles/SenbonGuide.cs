@@ -14,7 +14,7 @@ namespace BleachMod.Content.Projectiles
     {
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("SenbonGuide");
+			// DisplayName.SetDefault("SenbonGuide");
 			
 		}
 
@@ -44,7 +44,7 @@ namespace BleachMod.Content.Projectiles
 			newV.Y = 0f;
 			Vector2 newP = Projectile.position;
 			newP.Y -= 30;
-			Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.position, newV, ModContent.ProjectileType<Projectiles.SenbonBlade>(), 200, 0, Main.myPlayer);
+			Projectile.NewProjectile(Projectile.GetSource_FromThis(), newP, newV, ModContent.ProjectileType<Projectiles.SenbonBlade>(), 200, 0, Main.myPlayer);
 			return true;
 		}
 

@@ -1,4 +1,5 @@
 ﻿using BleachMod.Common.Players;
+using BleachMod.Content.Buffs;
 using BleachMod.Content.Classes;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -14,8 +15,8 @@ namespace BleachMod.Content.Items.Weapons.ShinigamiSwords
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Nozarashi");
-			Tooltip.SetDefault("A Zanpakuto belonging to the strongest Shinigami.");
+			// DisplayName.SetDefault("Nozarashi");
+			// Tooltip.SetDefault("A Zanpakuto belonging to the strongest Shinigami.");
 			ItemID.Sets.ItemsThatAllowRepeatedRightClick[Type] = true;
 
 		}
@@ -23,11 +24,11 @@ namespace BleachMod.Content.Items.Weapons.ShinigamiSwords
 		public override void SetDefaults()
 		{
 			Item.damage = 50;
-			Item.DamageType = ModContent.GetInstance<Shinigami>();
+			Item.DamageType = ModContent.GetInstance<ShinigamiDamage>();
 			Item.width = 24;
 			Item.height = 28;
-			Item.useTime = 10;
-			Item.useAnimation = 10;
+			Item.useTime = 17;
+			Item.useAnimation = 17;
 			Item.useStyle = ItemUseStyleID.Swing;
 			Item.knockBack = 6;
 			Item.value = 10000;
@@ -35,16 +36,19 @@ namespace BleachMod.Content.Items.Weapons.ShinigamiSwords
 			Item.UseSound = SoundID.Item1;
 			Item.autoReuse = true;
 		}
+		
 
 		private void OnRelease(Player player)
 		{
 			CombatText.NewText(Main.LocalPlayer.getRect(), Color.Yellow, "Drink \n Nozarashi");
 			player.inventory.SetValue(new Item(ModContent.ItemType<RNozarashi>()), player.selectedItem);
+			player.GetModPlayer<BleachPlayer>().C_Pressure -= 1;
 		}
 		private void OnBankaiRelease(Player player)
 		{
 			//CombatText.NewText(Main.LocalPlayer.getRect(), Color.White, "");
 			player.inventory.SetValue(new Item(ModContent.ItemType<NozarashiBankai>()), player.selectedItem);
+			player.GetModPlayer<BleachPlayer>().C_Pressure -= 1;
 		}
 
 		public override void AddRecipes()
@@ -55,6 +59,8 @@ namespace BleachMod.Content.Items.Weapons.ShinigamiSwords
 			recipe.AddTile(TileID.LunarCraftingStation);
 			recipe.Register();
 		}
+
+		
 
 		public override void HoldItem(Player player)
 		{

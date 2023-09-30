@@ -14,8 +14,8 @@ namespace BleachMod.Content.Items.Weapons.ShinigamiSwords
     {
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Shinso");
-			Tooltip.SetDefault("A Zanpakuto belonging to a Snake like Captain.");
+			// DisplayName.SetDefault("Shinso");
+			// Tooltip.SetDefault("A Zanpakuto belonging to a Snake like Captain.");
 			ItemID.Sets.ItemsThatAllowRepeatedRightClick[Type] = true;
 
 		}
@@ -23,7 +23,7 @@ namespace BleachMod.Content.Items.Weapons.ShinigamiSwords
 		public override void SetDefaults()
 		{
 			Item.damage = 50;
-			Item.DamageType = ModContent.GetInstance<Shinigami>();
+			Item.DamageType = ModContent.GetInstance<ShinigamiDamage>();
 			Item.width = 24;
 			Item.height = 28;
 			Item.useTime = 10;

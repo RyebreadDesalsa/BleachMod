@@ -38,8 +38,8 @@ namespace BleachMod.Common.Players{
             hasBadge = false;
             hasCloak = false;
         }
-
-        public override void clientClone(ModPlayer clientClone)
+        
+        public override void CopyClientState(ModPlayer clientClone)/* tModPorter Suggestion: Replace Item.Clone usages with Item.CopyNetStateTo */
         {
             BleachPlayer ps = clientClone as BleachPlayer;
             ps.MaxPressure = MaxPressure;
@@ -55,7 +55,10 @@ namespace BleachMod.Common.Players{
             
         public void HandlePressure()
         {
-            
+            if (C_Pressure < 0)
+            {
+                C_Pressure = 0;
+            }
             P_RechargeTimer += PressureRegenRate;
             if (P_RechargeDelay > 180)
             {

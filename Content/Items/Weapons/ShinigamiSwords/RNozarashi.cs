@@ -1,4 +1,5 @@
 ﻿using BleachMod.Common.Players;
+using BleachMod.Content.Buffs;
 using BleachMod.Content.Classes;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -14,20 +15,20 @@ namespace BleachMod.Content.Items.Weapons.ShinigamiSwords
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("RNozarashi");
-			Tooltip.SetDefault("A Zanpakuto belonging to the strongest Shinigami.");
-			ItemID.Sets.ItemsThatAllowRepeatedRightClick[Type] = true;
+			// DisplayName.SetDefault("RNozarashi");
+			// Tooltip.SetDefault("A Zanpakuto belonging to the strongest Shinigami.\nGives increased armor penetration\nBuffs the user on enemy hit");
 
 		}
 
 		public override void SetDefaults()
 		{
-			Item.damage = 100;
-			Item.DamageType = ModContent.GetInstance<Shinigami>();
+			Item.damage = 150;
+			Item.ArmorPenetration = 25;
+			Item.DamageType = ModContent.GetInstance<ShinigamiDamage>();
 			Item.width = 95;
 			Item.height = 80;
-			Item.useTime = 25;
-			Item.useAnimation = 25;
+			Item.useTime = 20;
+			Item.useAnimation = 20;
 			Item.useStyle = ItemUseStyleID.Swing;
 			Item.knockBack = 10;
 			Item.value = 10000;
@@ -36,33 +37,18 @@ namespace BleachMod.Content.Items.Weapons.ShinigamiSwords
 			Item.autoReuse = true;
 		}
 
-		public override bool AltFunctionUse(Player player)
-		{
-			return true;
-		}
-		public override bool CanUseItem(Player player)
-		{
-			if (player.altFunctionUse == 2)
-			{
-				//right click
-				//Item.useStyle = ItemUseStyleID.HoldUp;
-				//Item.noMelee = true;
-			}
-			else if (player.altFunctionUse == 0)
-			{
-				//left click
-				Item.useStyle = ItemUseStyleID.Swing;
-				Item.noMelee = false;
-			}
-			return base.CanUseItem(player);
-		}
+        public override void ModifyHitNPC(Player player, NPC target, ref NPC.HitModifiers modifiers)
+        {
+			player.AddBuff(ModContent.BuffType<NozarashiBuff>(), 60);
+			base.ModifyHitNPC(player, target, ref modifiers);
+        }
 
 		private void OnSeal(Player player)
 		{
 			int loc = -1;
 			for (int i = 0; i < 10; i++)
 			{
-				if (player.inventory.GetValue(i).ToString()[8..18].Equals("RNozarashi"))
+				if (player.inventory.GetValue(i).ToString()[8..19].Equals("R Nozarashi"))
 				{
 					loc = i;
 				}
@@ -76,6 +62,7 @@ namespace BleachMod.Content.Items.Weapons.ShinigamiSwords
 		{
 			//CombatText.NewText(Main.LocalPlayer.getRect(), Color.White, "");
 			player.inventory.SetValue(new Item(ModContent.ItemType<NozarashiBankai>()), player.selectedItem);
+			player.GetModPlayer<BleachPlayer>().C_Pressure -= 1;
 		}
 
 		public override void HoldItem(Player player)
@@ -101,7 +88,7 @@ namespace BleachMod.Content.Items.Weapons.ShinigamiSwords
 		}
 		public override void UpdateInventory(Player player)
 		{
-			if (player.HeldItem.Name != "RNozarashi")
+			if (player.HeldItem.Name != "R Nozarashi")
 			{
 				OnSeal(player);
 			}
