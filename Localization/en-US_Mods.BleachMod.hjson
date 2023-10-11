@@ -1,150 +1,175 @@
 Keybinds: {
 	Shikai.DisplayName: Shikai
 	Bankai.DisplayName: Bankai
-	"Flash Step.DisplayName": Flash  Step
+	"Flash Step.DisplayName": Flash Step
 }
 
 Buffs: {
 	NozarashiBuff: {
 		DisplayName: Nozarashi Buff
-		Description: Mods.BleachMod.Buffs.NozarashiBuff.Description
+		Description: Grants +10 defense, +1 life regen, increases movement, and jump speed.
 	}
 }
+
+Mods.BleachMod.Content.Classes.ShinigamiDamage.DisplayName: Shinigami Damage
 
 Items: {
 	CaptainCloak: {
 		DisplayName: Captain Cloak
-		Tooltip: ""
+		Tooltip:
+			'''
+			The cloak of a Captain 
+			Allows for the use of Flash Step
+			10% Increased Shinigami Damage
+			Increased spiritual pressure recovery
+			Does not work with the Lieutenant's Badge
+			'''
 	}
 
 	Gikon: {
 		DisplayName: Gikon
-		Tooltip: ""
+		Tooltip: Gives a small increase to spiritual pressure
 	}
 
 	Hogyoku: {
 		DisplayName: Hogyoku
-		Tooltip: ""
+		Tooltip: Gives vast increases to spiritual pressure (this is a test item)
 	}
 
 	LieutenantBadge: {
 		DisplayName: Lieutenant Badge
-		Tooltip: ""
+		Tooltip:
+			'''
+			The badge of a Lieutenant 
+			Allows for the use of Flash Step
+			5% Increased Shinigami Damage
+			Increased spiritual pressure recovery
+			Does not work with the Captains Cloak
+			'''
 	}
 
 	ShinigamiEmblem: {
 		DisplayName: Shinigami Emblem
-		Tooltip: ""
+		Tooltip: 15% increased Shinigami damage
 	}
 
 	Captain_Rank: {
-		DisplayName: Captain_ Rank
-		Tooltip: ""
+		DisplayName: Captain Rank
+		Tooltip: The rank of a masturful Shinigami.
 	}
 
 	Lieutenant_Rank: {
-		DisplayName: Lieutenant_ Rank
-		Tooltip: ""
+		DisplayName: Lieutenant Rank
+		Tooltip: The rank of a proficient Shinigami.
 	}
 
 	Shihakusho: {
-		DisplayName: Shihakusho
-		Tooltip: ""
+		DisplayName: Shinigami Shihakusho
+		Tooltip: The standard uniform of a Shinigami.
 	}
 
 	Shinigami_Sandals: {
-		DisplayName: Shinigami_ Sandals
-		Tooltip: ""
+		DisplayName: Shinigami Sandals
+		Tooltip: The standard sandals of a Shinigami.
 	}
 
 	Squad_Member: {
-		DisplayName: Squad_ Member
-		Tooltip: ""
+		DisplayName: Squad Member Rank
+		Tooltip: The standard rank of a Shinigami.
 	}
 
 	Third_Seat_Rank: {
-		DisplayName: Third_ Seat_ Rank
-		Tooltip: ""
+		DisplayName: Third Seat Rank
+		Tooltip: The rank of a Shinigami with some skill.
 	}
 
 	Gegetsuburi: {
 		DisplayName: Gegetsuburi
-		Tooltip: ""
+		Tooltip: A Zanpakuto belonging to a rich coward.
 	}
 
 	KamishiniNoYari: {
 		DisplayName: Kamishini No Yari
-		Tooltip: ""
+		Tooltip: A Zanpakuto belonging to a Snake like Captain.
 	}
 
 	Nejibana: {
 		DisplayName: Nejibana
-		Tooltip: ""
+		Tooltip: A Zanpakuto belonging to a lieutenant from a once noble clan.
 	}
 
 	Nozarashi: {
 		DisplayName: Nozarashi
-		Tooltip: ""
+		Tooltip: A Zanpakuto belonging to the strongest Shinigami.
 	}
 
 	NozarashiBankai: {
 		DisplayName: Nozarashi Bankai
-		Tooltip: ""
+		Tooltip:
+			'''
+			A Zanpakuto belonging to the strongest Shinigami.
+			Gives increased armor penetration
+			'''
 	}
 
 	RGegetsuburi: {
 		DisplayName: R Gegetsuburi
-		Tooltip: ""
+		Tooltip: A Zanpakuto belonging to a rich coward.
 	}
 
 	RNejibana: {
 		DisplayName: R Nejibana
-		Tooltip: ""
+		Tooltip: A Zanpakuto belonging to a lieutenant from a once noble clan.
 	}
 
 	RNozarashi: {
 		DisplayName: R Nozarashi
-		Tooltip: ""
+		Tooltip:
+			'''
+			A Zanpakuto belonging to the strongest Shinigami.
+			Gives increased armor penetration
+			Buffs the user on enemy hit
+			'''
 	}
 
 	RSenbonzakura: {
 		DisplayName: R Senbonzakura
-		Tooltip: ""
+		Tooltip: A Zanpakuto belonging to a Noble Captain.
 	}
 
 	RShinso: {
 		DisplayName: R Shinso
-		Tooltip: ""
+		Tooltip: A Zanpakuto belonging to a Snake like Captain.
 	}
 
 	Senbonzakura: {
 		DisplayName: Senbonzakura
-		Tooltip: ""
+		Tooltip: A Zanpakuto belonging to a Noble Captain.
 	}
 
 	SenbonzakuraKageyoshi: {
 		DisplayName: Senbonzakura Kageyoshi
-		Tooltip: ""
+		Tooltip: A Zanpakuto belonging to a Noble Captain.
 	}
 
 	Shinso: {
 		DisplayName: Shinso
-		Tooltip: ""
+		Tooltip: A Zanpakuto belonging to a Snake like Captain.
 	}
 
 	TensaZangetsu: {
 		DisplayName: Tensa Zangetsu
-		Tooltip: ""
+		Tooltip: A Zanpakuto belonging to a substitute Shinigami.
 	}
 
 	Zangetsu: {
 		DisplayName: Zangetsu
-		Tooltip: ""
+		Tooltip: A Zanpakuto belonging to a substitute Shinigami.
 	}
 
 	Zanpakuto: {
 		DisplayName: Zanpakuto
-		Tooltip: ""
+		Tooltip: A Zanpakuto Asauchi.
 	}
 }
 

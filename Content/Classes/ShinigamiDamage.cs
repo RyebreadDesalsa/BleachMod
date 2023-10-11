@@ -9,7 +9,7 @@ namespace BleachMod.Content.Classes
 	{
         public override void SetStaticDefaults()
         {
-			// ((DamageClass)this).DisplayName.SetDefault("Shinigami damage");
+			
 			base.SetStaticDefaults();
         }
         public override StatInheritanceData GetModifierInheritance(DamageClass damageClass) {

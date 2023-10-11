@@ -12,7 +12,6 @@ namespace BleachMod.Content.Projectiles
 {
     internal class SenbonBlade : ModProjectile
     {
-		private int timer = 0;
 		public override void SetStaticDefaults()
 		{
 			// DisplayName.SetDefault("Petal");
@@ -55,7 +54,7 @@ namespace BleachMod.Content.Projectiles
 			return true;
 		}
 
-        public override void Kill(int timeLeft)
+        public override void OnKill(int timeLeft)
         {
 			for(int i = 0; i < 10; i++)
             {
@@ -65,7 +64,7 @@ namespace BleachMod.Content.Projectiles
 				newV = newV.RotatedByRandom(MathHelper.ToRadians(360));
 				Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.position, newV, ModContent.ProjectileType<Projectiles.Petals>(), 24, 0, Main.myPlayer);
 			}
-            base.Kill(timeLeft);
+            base.OnKill(timeLeft);
         }
 
     }
