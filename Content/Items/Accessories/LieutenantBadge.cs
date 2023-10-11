@@ -36,7 +36,8 @@ namespace BleachMod.Content.Items.Accessories
         public override void AddRecipes()
         {
             Recipe recipe = CreateRecipe();
-            recipe.AddIngredient(ItemID.RodofDiscord);
+            recipe.AddIngredient(ItemID.SoulofLight, 10);
+            recipe.AddIngredient(ItemID.SoulofNight, 10);
             recipe.AddIngredient<Content.Items.Accessories.ShinigamiEmblem>();
             recipe.AddTile(TileID.TinkerersWorkbench);
             recipe.Register();

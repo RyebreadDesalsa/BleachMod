@@ -13,7 +13,6 @@ namespace BleachMod.Content.Projectiles
 {
     internal class Petals : ModProjectile
     {
-		private int timer = 0;
 		public override void SetStaticDefaults()
 		{
 			// DisplayName.SetDefault("Petal");

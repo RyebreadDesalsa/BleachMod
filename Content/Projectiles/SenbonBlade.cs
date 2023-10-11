@@ -12,7 +12,6 @@ namespace BleachMod.Content.Projectiles
 {
     internal class SenbonBlade : ModProjectile
     {
-		private int timer = 0;
 		public override void SetStaticDefaults()
 		{
 			// DisplayName.SetDefault("Petal");

@@ -79,7 +79,6 @@ namespace BleachMod.Content.Projectiles
 			}
 
 			Vector2 mountedCenter = player.MountedCenter;
-			bool doFastThrowDust = false;
 			bool shouldOwnerHitCheck = false;
 			int launchTimeLimit = 30;  // How much time the projectile can go before retracting (speed and shootTimer will set the flail's range)
 			float launchSpeed = 20f; // How fast the projectile can move
@@ -146,7 +145,6 @@ namespace BleachMod.Content.Projectiles
 					}
 				case AIState.LaunchingForward:
 					{
-						doFastThrowDust = true;
 						bool shouldSwitchToRetracting = StateTimer++ >= launchTimeLimit;
 						shouldSwitchToRetracting |= Projectile.Distance(mountedCenter) >= maxLaunchLength;
 						if (player.controlUseItem) // If the player clicks, transition to the Dropping state

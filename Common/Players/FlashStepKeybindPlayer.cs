@@ -19,19 +19,43 @@ namespace BleachMod.Common.Players
 			{
 				if (Player.GetModPlayer<BleachPlayer>().C_Pressure >= 50 && (Player.GetModPlayer<BleachPlayer>().hasBadge || Player.GetModPlayer<BleachPlayer>().hasCloak))
 				{
+					int x = 0;
+					int y = 0;
+					if(Main.keyState.IsKeyDown(key: Microsoft.Xna.Framework.Input.Keys.W))
+                    {
+						y -= 1;
+                    }
+					if (Main.keyState.IsKeyDown(key: Microsoft.Xna.Framework.Input.Keys.A))
+                    {
+						x -= 1;
+                    }
+					if (Main.keyState.IsKeyDown(key: Microsoft.Xna.Framework.Input.Keys.S))
+                    {
+						y += 1;
+                    }
+					if (Main.keyState.IsKeyDown(key: Microsoft.Xna.Framework.Input.Keys.D))
+                    {
+						x += 1;
+                    }
+
+					if(x==0 && y == 0)
+                    {
+						return;
+                    }
 					Player.GetModPlayer<BleachPlayer>().C_Pressure -= 50;
-					Vector2 playerPos = Player.Center;
-					Vector2 mousePos = Main.MouseWorld;
+
+					Vector2 direction = new Vector2(x, y);
+					direction.Normalize();
+					
 					int spdmod =(int) (Player.GetModPlayer<BleachPlayer>().MaxPressure/ 8);
 					if (spdmod > 30)
                     {
 						spdmod = 30;
                     }
-
-					Vector2 direction = mousePos - playerPos;
-					direction.Normalize();
-					direction = direction * spdmod;
 					
+
+					
+					direction*=spdmod;
 					Player.velocity = direction;
 					
 				}
