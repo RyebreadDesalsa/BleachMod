@@ -3,21 +3,23 @@ using BleachMod.Content.Buffs;
 using BleachMod.Content.Classes;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
+
 namespace BleachMod.Content.Items.Weapons.ShinigamiSwords
 {
 	internal class NozarashiBankai : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("NozarashiBankai");
-			// Tooltip.SetDefault("A Zanpakuto belonging to the strongest Shinigami.\nGives increased armor penetration");
+		int timer = 0;
+		int speed = 0;
+		int delay = 0;
+		Vector2 position;
+		Vector2 angle;
 
-		}
 
 		public override void SetDefaults()
 		{
@@ -37,8 +39,49 @@ namespace BleachMod.Content.Items.Weapons.ShinigamiSwords
 			Item.useStyle = ItemUseStyleID.Swing;
 			Item.UseSound = SoundID.Item1;
 			Item.autoReuse = true;
+			Item.noUseGraphic = false;
 
 		}
+        public override bool AltFunctionUse(Player player)
+        {
+			return true;
+        }
+        public override bool CanUseItem(Player player)
+        {
+			
+            if (player.altFunctionUse == 2)
+            {
+
+				position = Main.MouseWorld;
+				angle = Main.MouseWorld - player.position;
+				Main.NewText(angle);
+				if (angle.X > 0)
+                {
+					player.direction = 1;
+                } else
+                {
+					player.direction = -1;
+                }
+				speed = (int)(angle.X * angle.X);
+				speed += (int)(angle.Y * angle.Y);
+				speed = (int)Math.Sqrt(speed);
+				angle.Normalize();
+				timer = 10;
+				Main.NewText(speed);
+				Item.noUseGraphic = true;
+				Item.noMelee = true;
+				
+				return false;
+			}
+			if (player.altFunctionUse == 0)
+			{
+				Item.noUseGraphic = false;
+				Item.noMelee = false;
+			}
+
+
+			return true;
+        }
         public override void ModifyHitNPC(Player player, NPC target, ref NPC.HitModifiers modifiers)
         {
 			player.GetModPlayer<BleachPlayer>().C_Pressure -= 2;
@@ -46,7 +89,7 @@ namespace BleachMod.Content.Items.Weapons.ShinigamiSwords
         }
         public override bool? UseItem(Player player)
         {
-            return base.UseItem(player);
+			return base.UseItem(player);
         }
 
 
@@ -56,8 +99,7 @@ namespace BleachMod.Content.Items.Weapons.ShinigamiSwords
 			for (int i = 0; i < 10; i++)
 			{
 				if (player.inventory.GetValue(i).ToString()[8..24].Equals("Nozarashi Bankai"))
-				{
-
+				{ 
 					loc = i;
 				}
 			}
@@ -70,13 +112,32 @@ namespace BleachMod.Content.Items.Weapons.ShinigamiSwords
 
 		public override void HoldItem(Player player)
 		{
+
+			delay--;
+			if (timer > 1){
+				player.velocity = (angle * speed/(9))-angle*5;
+				timer--;
+
+			}
+			else if (timer == 1)
+            {
+				
+				player.velocity *= 0.25f;
+				timer--;
+				Projectile.NewProjectile(player.GetSource_FromThis(), player.Center, Vector2.Zero, ModContent.ProjectileType<Projectiles.NozarashiSwing>(),(int)player.GetDamage(ModContent.GetInstance<ShinigamiDamage>()).ApplyTo(1500), 0, Main.myPlayer);
+				delay = 1;
+			}
+			if (timer == 0 && delay < 0)
+            {
+				Item.noUseGraphic = false;
+			}
 			player.AddBuff(ModContent.BuffType<NozarashiBuff>(),1);
 			player.GetModPlayer<BleachPlayer>().PressureRegenAmount -= 5;
 			if (player.GetModPlayer<BleachPlayer>().C_Pressure < 10 || player.GetModPlayer<BleachPlayer>().MaxPressure < 150)
 			{
 				OnBankaiSeal(player);
 			}
-
+			
 			if (player.altFunctionUse == 3)
 			{
 				player.altFunctionUse = 0;
@@ -97,5 +158,7 @@ namespace BleachMod.Content.Items.Weapons.ShinigamiSwords
 
 			base.UpdateInventory(player);
 		}
-	}
+        
+
+    }
 }
