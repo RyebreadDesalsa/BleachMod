@@ -82,8 +82,8 @@ namespace BleachMod.Content.Projectiles
 
 		public override void SetDefaults()
 		{
-			Projectile.width = 46; // Hitbox width of projectile
-			Projectile.height = 48; // Hitbox height of projectile
+			Projectile.width = 76; // Hitbox width of projectile
+			Projectile.height = 54; // Hitbox height of projectile
 			Projectile.friendly = true; // Projectile hits enemies
 			Projectile.timeLeft = 10000; // Time it takes for projectile to expire
 			Projectile.penetrate = -1; // Projectile pierces infinitely
@@ -242,7 +242,7 @@ namespace BleachMod.Content.Projectiles
 
 			armPosition.Y += Owner.gfxOffY;
 			Projectile.Center = armPosition; // Set projectile to arm position
-			Projectile.scale = Size * 1.2f; // Slightly scale up the projectile
+			Projectile.scale = Size * 1.5f; // Slightly scale up the projectile
 
 			Owner.heldProj = Projectile.whoAmI; // set held projectile to this projectile
 		}

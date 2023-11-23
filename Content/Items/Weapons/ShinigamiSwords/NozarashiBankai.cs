@@ -65,6 +65,8 @@ namespace BleachMod.Content.Items.Weapons.ShinigamiSwords
 				speed = (int)(angle.X * angle.X);
 				speed += (int)(angle.Y * angle.Y);
 				speed = (int)Math.Sqrt(speed);
+				if (speed > 450)
+					speed = 450;
 				angle.Normalize();
 				timer = 10;
 				Main.NewText(speed);
@@ -114,22 +116,27 @@ namespace BleachMod.Content.Items.Weapons.ShinigamiSwords
 		{
 
 			delay--;
-			if (timer > 1){
-				player.velocity = (angle * speed/(9))-angle*5;
+			if (timer == 10){
+				Projectile.NewProjectile(player.GetSource_FromThis(), player.Center, Vector2.Zero, ModContent.ProjectileType<Projectiles.NozarashiSwing>(), (int)player.GetDamage(ModContent.GetInstance<ShinigamiDamage>()).ApplyTo(1500), 0, Main.myPlayer);
+				player.velocity = (angle * speed/(10))-angle*5;
+				player.GiveImmuneTimeForCollisionAttack(20);
 				timer--;
 
 			}
-			else if (timer == 1)
+			else if (timer > 0)
             {
-				
-				player.velocity *= 0.25f;
+				player.velocity = (angle * speed / (10)) - angle * 5;
 				timer--;
-				Projectile.NewProjectile(player.GetSource_FromThis(), player.Center, Vector2.Zero, ModContent.ProjectileType<Projectiles.NozarashiSwing>(),(int)player.GetDamage(ModContent.GetInstance<ShinigamiDamage>()).ApplyTo(1500), 0, Main.myPlayer);
-				delay = 1;
+				delay = 2;
 			}
-			if (timer == 0 && delay < 0)
+			else if(delay > 0)
+            {
+				player.velocity *= 0.25f;
+			}
+			if (timer == 0 && delay < 1)
             {
 				Item.noUseGraphic = false;
+				delay = 0;
 			}
 			player.AddBuff(ModContent.BuffType<NozarashiBuff>(),1);
 			player.GetModPlayer<BleachPlayer>().PressureRegenAmount -= 5;
