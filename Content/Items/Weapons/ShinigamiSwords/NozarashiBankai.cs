@@ -51,29 +51,42 @@ namespace BleachMod.Content.Items.Weapons.ShinigamiSwords
 			
             if (player.altFunctionUse == 2)
             {
-
-				position = Main.MouseWorld;
-				angle = Main.MouseWorld - player.position;
-				Main.NewText(angle);
-				if (angle.X > 0)
+				if (player.GetModPlayer<BleachPlayer>().C_Pressure < 10)
                 {
-					player.direction = 1;
-                } else
-                {
-					player.direction = -1;
+					OnBankaiSeal(player);
                 }
-				speed = (int)(angle.X * angle.X);
-				speed += (int)(angle.Y * angle.Y);
-				speed = (int)Math.Sqrt(speed);
-				if (speed > 450)
-					speed = 450;
-				angle.Normalize();
-				timer = 10;
-				Main.NewText(speed);
-				Item.noUseGraphic = true;
-				Item.noMelee = true;
+                else
+                {
+					player.GetModPlayer<BleachPlayer>().C_Pressure -= 10;
+					position = Main.MouseWorld;
+					angle = Main.MouseWorld - player.position;
+					Main.NewText(angle);
+					if (angle.X > 0)
+					{
+						player.direction = 1;
+					}
+					else
+					{
+						player.direction = -1;
+					}
+					if (angle.X == 0 && angle.Y == 0)
+                    {
+						angle.X = 1;
+                    }
+					speed = (int)(angle.X * angle.X);
+					speed += (int)(angle.Y * angle.Y);
+					speed = (int)Math.Sqrt(speed);
+					if (speed > 450)
+						speed = 450;
+					angle.Normalize();
+					timer = 10;
+					Main.NewText(speed);
+					Item.noUseGraphic = true;
+					Item.noMelee = true;
+
+					return false;
+				}
 				
-				return false;
 			}
 			if (player.altFunctionUse == 0)
 			{
@@ -139,7 +152,7 @@ namespace BleachMod.Content.Items.Weapons.ShinigamiSwords
 				delay = 0;
 			}
 			player.AddBuff(ModContent.BuffType<NozarashiBuff>(),1);
-			player.GetModPlayer<BleachPlayer>().PressureRegenAmount -= 5;
+			player.GetModPlayer<BleachPlayer>().PressureRegenAmount -= 3;
 			if (player.GetModPlayer<BleachPlayer>().C_Pressure < 10 || player.GetModPlayer<BleachPlayer>().MaxPressure < 150)
 			{
 				OnBankaiSeal(player);
