@@ -60,7 +60,6 @@ namespace BleachMod.Content.Items.Weapons.ShinigamiSwords
 					player.GetModPlayer<BleachPlayer>().C_Pressure -= 10;
 					position = Main.MouseWorld;
 					angle = Main.MouseWorld - player.position;
-					Main.NewText(angle);
 					if (angle.X > 0)
 					{
 						player.direction = 1;
@@ -80,7 +79,6 @@ namespace BleachMod.Content.Items.Weapons.ShinigamiSwords
 						speed = 450;
 					angle.Normalize();
 					timer = 10;
-					Main.NewText(speed);
 					Item.noUseGraphic = true;
 					Item.noMelee = true;
 
