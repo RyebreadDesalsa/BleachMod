@@ -144,19 +144,19 @@ namespace BleachMod.Content.Items.Weapons.ShinigamiSwords
 				{
 					player.GetModPlayer<BleachPlayer>().C_Pressure -= 25;
 					Vector2 Vel = (Main.MouseWorld - player.Center).SafeNormalize(Vector2.Zero) * 15f;
-					Projectile.NewProjectile(player.GetSource_FromThis(), player.Center, Vel, ModContent.ProjectileType<Projectiles.BlackGetsuga>(), 25, 0, Main.myPlayer);
+					Projectile.NewProjectile(player.GetSource_FromThis(), player.Center, Vel, ModContent.ProjectileType<Projectiles.BlackGetsuga>(), (int)player.GetDamage(ModContent.GetInstance<ShinigamiDamage>()).ApplyTo(25), 0, Main.myPlayer);
 				}
 				else if (charge > 50)
 				{
 					player.GetModPlayer<BleachPlayer>().C_Pressure -= 15;
 					Vector2 Vel = (Main.MouseWorld - player.Center).SafeNormalize(Vector2.Zero) * 10f;
-					Projectile.NewProjectile(player.GetSource_FromThis(), player.Center, Vel, ModContent.ProjectileType<Projectiles.BlackGetsuga>(), 25, 0, Main.myPlayer);
+					Projectile.NewProjectile(player.GetSource_FromThis(), player.Center, Vel, ModContent.ProjectileType<Projectiles.BlackGetsuga>(), (int)player.GetDamage(ModContent.GetInstance<ShinigamiDamage>()).ApplyTo(25), 0, Main.myPlayer);
 				}
 				else if (charge > 5)
 				{
 					player.GetModPlayer<BleachPlayer>().C_Pressure -= 5;
 					Vector2 Vel = (Main.MouseWorld - player.Center).SafeNormalize(Vector2.Zero) * 7f;
-					Projectile.NewProjectile(player.GetSource_FromThis(), player.Center, Vel, ModContent.ProjectileType<Projectiles.BlackGetsuga>(), 25, 0, Main.myPlayer);
+					Projectile.NewProjectile(player.GetSource_FromThis(), player.Center, Vel, ModContent.ProjectileType<Projectiles.BlackGetsuga>(), (int)player.GetDamage(ModContent.GetInstance<ShinigamiDamage>()).ApplyTo(25), 0, Main.myPlayer);
 				}
 				charge = 0;
 			}

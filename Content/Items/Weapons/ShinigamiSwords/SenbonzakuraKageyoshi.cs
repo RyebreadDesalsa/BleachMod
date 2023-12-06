@@ -76,7 +76,10 @@ namespace BleachMod.Content.Items.Weapons.ShinigamiSwords
                 {
 					ShotTimer = 0;
 					player.GetModPlayer<BleachPlayer>().C_Pressure -= 1;
-					Projectile.NewProjectileDirect(player.GetSource_FromAI(), player.Center, (Main.MouseWorld - player.position).SafeNormalize(Vector2.Zero) * 15f, ModContent.ProjectileType<Projectiles.Petals>(), 24, 0, player.whoAmI);
+					Vector2 Spawnpos = Main.MouseWorld;
+					Spawnpos+=new Vector2(1,1).RotatedByRandom(MathHelper.ToRadians(360))*200;
+					Vector2 velocity = (Main.MouseWorld - Spawnpos).SafeNormalize(Vector2.Zero) * 15f;
+					Projectile.NewProjectileDirect(player.GetSource_FromAI(), Spawnpos, (velocity).SafeNormalize(Vector2.Zero) * 15f, ModContent.ProjectileType<Projectiles.Petals>(), (int)player.GetDamage(ModContent.GetInstance<ShinigamiDamage>()).ApplyTo(24), 0, player.whoAmI);
 				}
 				ShotTimer++;
 			}
